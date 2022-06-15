@@ -4,6 +4,17 @@ PyTorch implementation of deep residual involution network for hyperspectral ima
 
 ![image](fig/dynamic_kernel_generation.png)
 
+# Basic Usage
+
+```
+model = DRIN(num_classes=16, channels=200)
+model.eval()
+print(model)
+input = torch.randn(100, 200, 11, 11)
+y = model(input)
+print(y.size())
+```
+
 # Paper
 
 [Deep residual involution network for hyperspectral image classification](https://www.mdpi.com/2072-4292/13/16/3055)
