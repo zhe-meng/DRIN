@@ -1,5 +1,7 @@
 # DRIN
 
+PyTorch implementation of deep residual involution network for hyperspectral image classification.
+
 ![image](fig/dynamic_kernel_generation.png)
 
 # Paper
