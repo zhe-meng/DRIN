@@ -1,3 +1,13 @@
+'''
+DRIN
+
+Meng Z, Zhao F, Liang M, et al. Deep residual involution 
+network for hyperspectral image classification[J]. Remote 
+Sensing, 2021, 13(16): 3055.
+
+'''
+
+import torch
 from torch import nn
 from mmcv.cnn import ConvModule
 
@@ -78,21 +88,17 @@ class IVoubottleneck(nn.Module):
         return out
 
 
-
 class DRIN(nn.Module):
-    def __init__(self, num_classes, channels, args):
+    def __init__(self, num_classes, channels, reduct=4, groups=12, iksize=5, numblocks=3):
         super(DRIN, self).__init__()
-        self.reduct = args.num_involution_reduct
-        self.groups = args.num_involution_groups
-        self.iksize = args.involution_kernel_size
-        self.numblocks = args.num_blocks
+
         self.inplanes = 96
         self.midinplanes = 24
         self.conv1 = nn.Conv2d(channels, self.inplanes, kernel_size=1, stride=1, padding=0, bias=False)
  
         layers = []
-        for _ in range(self.numblocks):
-            layers.append(IVoubottleneck(self.inplanes, self.midinplanes, iksize=self.iksize, reduct=self.reduct, groups=self.groups))
+        for _ in range(numblocks):
+            layers.append(IVoubottleneck(self.inplanes, self.midinplanes, iksize=iksize, reduct=reduct, groups=groups))
         self.block = nn.Sequential(*layers)
 
         self.bn = nn.BatchNorm2d(self.inplanes)
@@ -118,3 +124,13 @@ class DRIN(nn.Module):
         out = out.view(out.size(0), -1)
         out = self.linear(out)
         return out
+
+
+if __name__ == '__main__':
+
+    model = DRIN(num_classes=16, channels=200)
+    model.eval()
+    print(model)
+    input = torch.randn(100, 200, 11, 11)
+    y = model(input)
+    print(y.size())
