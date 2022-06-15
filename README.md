@@ -1,5 +1,6 @@
 # DRIN
 
+![image](fig/dynamic_kernel_generation.png)
 
 # Paper
 
