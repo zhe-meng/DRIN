@@ -1,4 +1,4 @@
-# DRIN
+# Deep Residual Involution Network for Hyperspectral Image Classification
 
 PyTorch implementation of deep residual involution network for hyperspectral image classification.
 
