@@ -7,6 +7,9 @@ PyTorch implementation of deep residual involution network for hyperspectral ima
 # Basic Usage
 
 ```
+import torch
+from DRIN import DRIN
+
 model = DRIN(num_classes=16, channels=200)
 model.eval()
 print(model)
@@ -34,6 +37,10 @@ Please cite our paper if you find it useful for your research.
 }
 ```
 
-# Acknowledgment
+# Reference Paper
 
-This code is partly borrowed from [Involution](https://github.com/d-li14/involution)
+* Involution: Inverting the Inherence of Convolution for Visual Recognition
+
+# Reference Code
+
+* involution https://github.com/d-li14/involution
