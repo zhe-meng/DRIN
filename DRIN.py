@@ -56,7 +56,7 @@ class involution(nn.Module):
 
 
 class IVoubottleneck(nn.Module):
-    def __init__(self, inplanes, planes, iksize=5, reduct=4, groups=16):
+    def __init__(self, inplanes, planes, iksize=5, reduct=4, groups=24):
         super(IVoubottleneck, self).__init__()
         self.bn1 = nn.BatchNorm2d(inplanes)
         self.relu = nn.ReLU(True)
