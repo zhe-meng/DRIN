@@ -89,7 +89,7 @@ class IVoubottleneck(nn.Module):
 
 
 class DRIN(nn.Module):
-    def __init__(self, num_classes, channels, reduct=4, groups=12, iksize=5, numblocks=3):
+    def __init__(self, num_classes, channels, reduct=4, groups=24, iksize=5, numblocks=3):
         super(DRIN, self).__init__()
 
         self.inplanes = 96
